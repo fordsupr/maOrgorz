@@ -32,22 +32,22 @@ description: >-
 
 ```bash
 # 範例文本 → 提交 → 立即處理 → 印出草稿
-node .claude/skills/orgorz-pipeline-offering/seed.mjs --email me@x.com --sample --run
+node .claude/skills/orgorz-pipeline-offering/scripts/seed.mjs --email me@x.com --sample --run
 
 # 自訂文本 / 檔案；menu 型指定 @店名
-node .claude/skills/orgorz-pipeline-offering/seed.mjs --email me@x.com --text "馬桶漏水 NT$ 800 - 2,500" --run
-node .claude/skills/orgorz-pipeline-offering/seed.mjs --email me@x.com --file menu.md --shop-type menu --shop-tag @早餐店 --run
+node .claude/skills/orgorz-pipeline-offering/scripts/seed.mjs --email me@x.com --text "馬桶漏水 NT$ 800 - 2,500" --run
+node .claude/skills/orgorz-pipeline-offering/scripts/seed.mjs --email me@x.com --file menu.md --shop-type menu --shop-tag @早餐店 --run
 
 # 列我的任務狀態
-node .claude/skills/orgorz-pipeline-offering/seed.mjs --email me@x.com --list
+node .claude/skills/orgorz-pipeline-offering/scripts/seed.mjs --email me@x.com --list
 
 # 補跑所有 pending（模擬 cron backstop）
-node .claude/skills/orgorz-pipeline-offering/seed.mjs --email me@x.com --backfill
+node .claude/skills/orgorz-pipeline-offering/scripts/seed.mjs --email me@x.com --backfill
 ```
 
 旗標：`--sample`（內建水電範例）/ `--text`/`--file`（內容三擇一）、`--run`（立即處理，否則留給 cron）、`--shop-type service_list|menu`、`--shop-tag @店名`（menu 型綁定）、`--category <code>`、`--list`、`--backfill`。
 
-## dev-only 三道防線（同 [addChiefOrg](.claude/skills/addChiefOrg/) 慣例）
+## dev-only 三道防線（同 [orgorz-addchief](.claude/skills/orgorz-addchief/) 慣例）
 1. **只打本機**：`BASE` 必為 `localhost`/`127.0.0.1`，任何非本機 URL 一律拒跑。
 2. **斷言 local D1**：啟動檢查 `.wrangler/state/v3/d1` 存在（CI/prod 無此目錄）。
 3. **拒 remote**：`--remote`/`--env remote` 一律拒絕。

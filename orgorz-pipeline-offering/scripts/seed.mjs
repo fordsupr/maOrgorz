@@ -14,11 +14,11 @@
 // 前置：`npm run dev`（dev server 起、AI/Vectorize remote）。登入走 OTP debug_code（EXPOSE_OTP_FOR_DEBUG=true）。
 //
 // 用法（cwd = 專案根）：
-//   node .claude/skills/orgorz-pipeline-offering/seed.mjs --email me@x.com --sample --run      # 範例→提交→立即處理
-//   node .claude/skills/orgorz-pipeline-offering/seed.mjs --email me@x.com --file menu.md --run --shop-type menu --shop-tag @早餐店
-//   node .claude/skills/orgorz-pipeline-offering/seed.mjs --email me@x.com --text "馬桶漏水 NT$ 800 - 2,500" --run
-//   node .claude/skills/orgorz-pipeline-offering/seed.mjs --email me@x.com --list                # 列我的任務
-//   node .claude/skills/orgorz-pipeline-offering/seed.mjs --email me@x.com --backfill            # 對所有 pending 補跑
+//   node .claude/skills/orgorz-pipeline-offering/scripts/seed.mjs --email me@x.com --sample --run      # 範例→提交→立即處理
+//   node .claude/skills/orgorz-pipeline-offering/scripts/seed.mjs --email me@x.com --file menu.md --run --shop-type menu --shop-tag @早餐店
+//   node .claude/skills/orgorz-pipeline-offering/scripts/seed.mjs --email me@x.com --text "馬桶漏水 NT$ 800 - 2,500" --run
+//   node .claude/skills/orgorz-pipeline-offering/scripts/seed.mjs --email me@x.com --list                # 列我的任務
+//   node .claude/skills/orgorz-pipeline-offering/scripts/seed.mjs --email me@x.com --backfill            # 對所有 pending 補跑
 import { existsSync, readFileSync } from 'node:fs'
 
 // ── dev-only 守門 ② ──
@@ -39,7 +39,7 @@ function parseArgs(argv) {
 }
 function usage(msg) {
   if (msg) console.error('✗', msg)
-  console.error('用法: node .claude/skills/orgorz-pipeline-offering/seed.mjs --email <email> [--sample | --text "..." | --file <path>] [--run] [--list] [--backfill] [--shop-type service_list|menu] [--shop-tag @店名] [--category <code>]')
+  console.error('用法: node .claude/skills/orgorz-pipeline-offering/scripts/seed.mjs --email <email> [--sample | --text "..." | --file <path>] [--run] [--list] [--backfill] [--shop-type service_list|menu] [--shop-tag @店名] [--category <code>]')
   process.exit(1)
 }
 
